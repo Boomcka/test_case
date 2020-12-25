@@ -1,21 +1,21 @@
-This is simple Spring Boot application, that zipped input files.
+#This is simple Spring Boot application, that zipped input files.
 
-Rules of Service:
- - All zipped files must be stored in cache.
- - If input file сontained in cache, Service must return file from cache avoid zip, with 303 return code.
- - If files is empty or null Service returned 404 code.
- - Files with same name but different content will be rewritten.
+##Rules of Service:
+ * All zipped files must be stored in cache.
+ * If input file сontained in cache, Service must return file from cache avoid zip, with 303 return code.
+ * If files is empty or null Service returned 404 code.
+ * Files with same name but different content will be rewritten.
       Example: 1) File a.txt (named this file first.txt) already zipped and zip stored in cache.
                2) User file a.txt(named this file second.txt) with different content is loaded into the Service.
                3) Service delete first.txt from cache, zipped second.txt, put zio of second.txt to cache.
                4) Service return zip of second.txt with code 200.
- - Files with same content but different name will be not zipped.
+ * Files with same content but different name will be not zipped.
       Example: 1) File a.txt already zipped and zip stored in cache.
                2) User file b.txt with same content is loaded into the Service.
                3) Service return a.txt.zip with code 303.
- - File name "_cache.json" system reserved, user will get error message if will try zip file with same name.
+ * File name "_cache.json" system reserved, user will get error message if will try zip file with same name.
 
- Tips:
+ #Tips:
  1) To save time was not done:
         - externalisation of error messages.
         - exception hierarchy.
