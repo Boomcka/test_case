@@ -32,6 +32,6 @@ public class ZipExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<Map<String,String>> handleBadRequest(Exception ex, RedirectAttributes redirectAttributes) {
         Map<String, String> errors = new HashMap<>();
         errors.put("error", "File is too big");
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
+        return ResponseEntity.status(HttpStatus.PAYLOAD_TOO_LARGE).body(errors);
     }
 }

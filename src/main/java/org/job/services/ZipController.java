@@ -41,7 +41,7 @@ public class ZipController {
         HttpStatus httpStatus;
         Resource ans;
         if (storageService.isContainedInCache(md5SumForFile)) {
-            httpStatus = HttpStatus.SEE_OTHER;
+            httpStatus = HttpStatus.NOT_MODIFIED;
             ans = storageService.getResourceFromCache(md5SumForFile);
         } else {
             httpStatus = HttpStatus.OK;

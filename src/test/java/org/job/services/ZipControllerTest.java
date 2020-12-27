@@ -56,7 +56,7 @@ public class ZipControllerTest {
         Mockito.when(resource.getInputStream()).thenReturn(new ByteArrayInputStream(new byte[0]));
         given(this.zipService.getResourceFromCache(Mockito.any())).willReturn(resource);
         this.mvc.perform(multipart("/").file(multipartFile)).andExpect(MockMvcResultMatchers.status()
-                .is(HttpStatus.SEE_OTHER.value())).andExpect(header().string("Etag", "sum"));
+                .is(HttpStatus.NOT_MODIFIED.value())).andExpect(header().string("Etag", "sum"));
     }
 
     @Test
@@ -65,6 +65,4 @@ public class ZipControllerTest {
         this.mvc.perform(multipart("/").file(multipartFile)).andExpect(MockMvcResultMatchers.status()
                 .isNotFound());
     }
-
-
 }
